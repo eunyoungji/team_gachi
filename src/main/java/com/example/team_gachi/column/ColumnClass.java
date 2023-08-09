@@ -21,7 +21,7 @@ public class ColumnClass {
     private String title;
 
     @Column
-    private Long columnOrder;
+    private Long columnIndex;
 
     @ManyToOne
     @JoinColumn(name = "board_id")
@@ -39,7 +39,7 @@ public class ColumnClass {
         this.title = title;
     }
 
-    public void setOrder(){
-        this.columnOrder = this.getId();
+    public void setIndex(){
+        this.columnIndex = this.getId();
     }
 }

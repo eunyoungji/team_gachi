@@ -12,14 +12,14 @@ import java.util.List;
 public class ColumnResponseDto {
     private Long id;
     private String title;
-    private Long columnOrder;
+    private Long columnIndex;
     private Board board;
     private List<Card> cardList;
 
     public ColumnResponseDto(ColumnClass column){
         this.id = column.getId();
         this.title = column.getTitle();
-        this.columnOrder = column.getColumnOrder();
+        this.columnIndex = column.getColumnIndex();
         this.board = column.getBoard();
     }
 }

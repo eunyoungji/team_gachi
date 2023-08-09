@@ -21,7 +21,7 @@ public class ColumnService {
         ColumnClass saveColumn = columnRepository.save(column);
 
         //순서 번호 저장
-        saveColumn.setOrder();
+        saveColumn.setIndex();
         ColumnClass addOrderColumn = columnRepository.save(saveColumn);
         //board entity에 있는 columnClassList에 추가
         board.addColumn(addOrderColumn);
