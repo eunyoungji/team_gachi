@@ -1,3 +1,4 @@
+/*
 package com.example.team_gachi.user.controller;
 
 import com.example.team_gachi.service.UserService;
@@ -24,5 +25,5 @@ public class UserController {
 
     }
 }
-
+*/
 

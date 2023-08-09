@@ -8,21 +8,29 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "user")
 public class User {
-
     @Id
     private Long id;
 
-    @Column
+    // username , 중복방지
+    @Column(nullable = false, unique = true)
     private String username;
 
-    @Column
+    // 비밀번호, 중복방지
+    @Column(nullable = false, unique = true)
     private String password;
 
-    @Column
+    // 닉네임, 중복방지
+    @Column(nullable = false, unique = true)
     private String nickname;
 
-    @Column
+  /*
+    // + 요소
+    // 이메일, 중복방지
+    @Column(nullable = false, unique = true)
     private String email;
+
+   */
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -30,4 +38,14 @@ public class User {
     public Long getId() {
         return id;
     }
+
+
+    public User(String username, String password, String nickname) {
+        this.username = username;
+        this.password = password;
+        this.nickname = nickname;
+    }
+
+    // 사용자 등록
+
 }

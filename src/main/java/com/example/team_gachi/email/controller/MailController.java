@@ -1,3 +1,4 @@
+/*
 package com.example.team_gachi.email.controller;
 
 import com.example.team_gachi.email.dto.CodeDto;
@@ -38,3 +39,4 @@ public class MailController {
 
 
 }
+*/
