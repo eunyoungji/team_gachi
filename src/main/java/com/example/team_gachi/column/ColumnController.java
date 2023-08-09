@@ -13,7 +13,6 @@ public class ColumnController {
     //칼럼 생성
     @PostMapping("/board/{id}/column")
     public ColumnResponseDto createColumn(@PathVariable Long id, @RequestBody ColumnRequestDto columnRequestDto){
-        System.out.println("실행확인1");
         ColumnResponseDto result = columnService.createColumn(columnRequestDto, id);
 
         return result;

@@ -17,7 +17,6 @@ public class ColumnService {
     public ColumnResponseDto createColumn(ColumnRequestDto columnRequestDto, Long id){
         Board board = boardService.findBoard(id);
         ColumnClass column = new ColumnClass(columnRequestDto, board);
-        System.out.println("실행 확인 ");
 
         ColumnClass saveColumn = columnRepository.save(column);
         //post entity에 있는 columnClassList에 추가
