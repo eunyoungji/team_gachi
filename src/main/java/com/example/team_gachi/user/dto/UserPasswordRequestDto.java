@@ -1,9 +1,11 @@
 package com.example.team_gachi.user.dto;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
-public class EditPasswordRequestDto {
+@Setter
+public class UserPasswordRequestDto {
     private String password;
     private String new_password;
 }
