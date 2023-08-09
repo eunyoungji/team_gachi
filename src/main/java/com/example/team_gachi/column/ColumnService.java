@@ -19,10 +19,14 @@ public class ColumnService {
         ColumnClass column = new ColumnClass(columnRequestDto, board);
 
         ColumnClass saveColumn = columnRepository.save(column);
-        //post entity에 있는 columnClassList에 추가
-        board.addColumn(saveColumn);
 
-        ColumnResponseDto columnResponseDto = new ColumnResponseDto(saveColumn);
+        //순서 번호 저장
+        saveColumn.setOrder();
+        ColumnClass addOrderColumn = columnRepository.save(saveColumn);
+        //board entity에 있는 columnClassList에 추가
+        board.addColumn(addOrderColumn);
+
+        ColumnResponseDto columnResponseDto = new ColumnResponseDto(addOrderColumn);
         return columnResponseDto;
     }
 

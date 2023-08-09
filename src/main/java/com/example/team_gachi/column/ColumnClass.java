@@ -20,6 +20,9 @@ public class ColumnClass {
     @Column(nullable = false)
     private String title;
 
+    @Column
+    private Long columnOrder;
+
     @ManyToOne
     @JoinColumn(name = "board_id")
     private Board board;
@@ -34,5 +37,9 @@ public class ColumnClass {
 
     public void setTitle(String title){
         this.title = title;
+    }
+
+    public void setOrder(){
+        this.columnOrder = this.getId();
     }
 }
