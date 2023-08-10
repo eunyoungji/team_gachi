@@ -5,11 +5,9 @@ import com.example.team_gachi.user.dto.LoginRequestDto;
 import com.example.team_gachi.user.dto.SignupRequestDto;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequestMapping("/api")
 public class UserController {
 
@@ -27,6 +25,11 @@ public class UserController {
     @GetMapping("/user/signup")
     public String signupPage() {
         return "signup";
+    }
+
+    @GetMapping("/hello")
+    public String hello(){
+        return "hello!";
     }
 
     @PostMapping("/user/signup")
