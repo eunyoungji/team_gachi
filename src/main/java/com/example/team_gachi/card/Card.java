@@ -34,30 +34,39 @@ public class Card {
     String color;
 
     @Column(name = "dueDate")
-    LocalDateTime dueDate;
+    String dueDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "column_id", nullable = false)
-    private ColumnClass columns;
+    @Column
+    private Long cardIndex;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "card", cascade = CascadeType.ALL)
-    private List<User> users = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "column_id")
+    private ColumnClass column;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "card", cascade = CascadeType.ALL)
-    private List<Comment> comments = new ArrayList<>();
+//    @OneToMany(fetch = FetchType.LAZY)
+//    private List<ColumnClass> columns = new ArrayList<>();
 
-    public Card(CardRequestDto cardRequestDto, ColumnClass columns) {
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "card", cascade = CascadeType.ALL)
+//    private List<User> users = new ArrayList<>();
+//
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "card", cascade = CascadeType.ALL)
+//    private List<Comment> comments = new ArrayList<>();
+
+
+
+    public Card(CardRequestDto cardRequestDto, ColumnClass column) {
         this.title = cardRequestDto.getTitle();
         this.content = cardRequestDto.getContent();
         this.color = cardRequestDto.getColor();
         this.dueDate = cardRequestDto.getDueDate();
-        this.columns = columns;
+        this.column = column;
     }
+
 
     public void updateCard(CardRequestDto cardRequestDto) {
         this.title = cardRequestDto.getTitle();
-//        this.content = cardRequestDto.getContent();
-//        this.color = cardRequestDto.getColor();
-//        this.dueDate = cardRequestDto.getDueDate();
+        this.content = cardRequestDto.getContent();
+        this.color = cardRequestDto.getColor();
+        this.dueDate = cardRequestDto.getDueDate();
     }
 }

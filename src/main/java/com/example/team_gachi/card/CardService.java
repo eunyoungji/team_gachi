@@ -15,9 +15,9 @@ public class CardService {
     private final ColumnService columnService;
 
     // 카드 생성
-    public CardResponseDto createCard(CardRequestDto cardRequestDto, Long id) {
-        ColumnClass columns = columnService.findColumnClass(id);
-        Card card = new Card(cardRequestDto, columns);
+    public CardResponseDto createCard(CardRequestDto cardRequestDto, Long columnId) { //Long columId
+        ColumnClass columns = columnService.findColumnClass(columnId);
+        Card card = new Card(cardRequestDto, columns); // columns
         cardRepository.save(card);
         return new CardResponseDto(card);
     }
@@ -39,6 +39,7 @@ public class CardService {
     public void deleteCard(Long id) {
         Card card = findCard(id);
         cardRepository.delete(card);
+
     }
 
     private Card findCard(Long id) {

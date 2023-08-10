@@ -1,7 +1,9 @@
 package com.example.team_gachi.card;
 
+import com.example.team_gachi.user.User;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
@@ -10,13 +12,18 @@ public class CardRequestDto {
     private String title;
     private String content;
     private String color;
-    private LocalDateTime dueDate;
+    private String dueDate;
+    //private User user;
 
     @Builder
-    public CardRequestDto(String title, String content, String color, LocalDateTime dueDate) {
+    //@Getter
+    //@Setter
+    public CardRequestDto(String title, String content, String color, String dueDate) {
+    //public class CardRequestDto {
         this.title = title;
         this.content = content;
         this.color = color;
         this.dueDate = dueDate;
+        //this.user = user;
     }
 }
