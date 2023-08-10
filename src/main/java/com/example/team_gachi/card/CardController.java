@@ -17,7 +17,7 @@ public class CardController {
 
     // 카드 생성
     //@PostMapping("/column/{column_id}/card")
-    @PostMapping("/board/{id}/cards")
+    @PostMapping("/cards")
     public ResponseEntity<CardResponseDto> createCard(@PathVariable Long columId, @RequestBody CardRequestDto cardRequestDto){
         CardResponseDto result = cardService.createCard(cardRequestDto, columId); //
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
