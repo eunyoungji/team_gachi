@@ -12,25 +12,21 @@ import com.example.team_gachi.user.repository.UserRepository;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
+    private final String ADMIN_TOKEN = "AAABnvxRVklrnYxKZ0aHgTBcXukeZygoC";
     private final UserRepository userRepository;
-
     private final PasswordEncoder passwordEncoder;
     private final JwtUtil jwtUtil;
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtUtil jwtUtil) {
 
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-        this.jwtUtil = jwtUtil;
-
-    }
 
     // 회원가입을 위한 메서드.
     // 요청받는 requestbody의 정보 (username, password, nickname)으로 계정생성.
@@ -54,16 +50,14 @@ public class UserService {
             throw new IllegalArgumentException("이미 존재하는 닉네임입니다.");
         }
 
-/*
+
         UserRoleEnum role= UserRoleEnum.USER;
         if(requestDto.isAdmin()){
-            if(ADMIN_TOKEN.equals(requestDto.getAdminToken())){
+            if(!ADMIN_TOKEN.equals(requestDto.getAdminToken())){
                 throw new IllegalArgumentException("관리자의 암호가 틀립니다.");
             }
             role = UserRoleEnum.ADMIN;
         }
-
- */
         // 사용자를 등록.
         User user = new User(username, password,nickname);
     }

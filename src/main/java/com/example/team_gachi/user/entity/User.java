@@ -15,7 +15,6 @@ public class User {
     @Id
     private Long id;
 
-    private String userid;
 
     // username , 중복방지
     @Column(nullable = false, unique = true)
@@ -51,9 +50,6 @@ public class User {
 
     }
 
-    public String getUserId() {
-        return userid;
-    }
 }
 
     /* 프로필 수정
