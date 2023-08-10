@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>PROJECT GACHI</title>
+</head>
+<style>
+    @font-face {
+        font-family: 'Shilla_Gothic-Bold';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/Shilla_Gothic-Bold.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    html {
+        height: 100%;
+    }
+    body {
+        font-family: '신라고딕체', 'Shilla_Gothic-Bold';
+        background-color: orange;
+    }
+
+    .login-box {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        width: 400px;
+        height: 320px;
+        padding: 100px;
+        transform: translate(-50%, -50%);
+        background: rgba(250, 220, 150, .8);
+        box-sizing: border-box;
+        box-shadow: 0 15px 25px rgba(0,0,0,.6);
+        border-radius: 10px;
+    }
+    .login {
+        position: absolute;
+        width: 260px;
+        height: 60px;
+        border: none;
+        border-radius: 8px;
+        padding: 20px 100px;
+        display: block;
+        margin-top: 130px;
+        margin-left: -30px;
+        background: #583672;
+        color: #fff;
+        font-weight: bold;
+        -webkit-box-shadow: 0px 9px 15px -11px rgba(88,54,114,1);
+        -moz-box-shadow: 0px 9px 15px -11px rgba(88,54,114,1);
+        box-shadow: 0px 9px 15px -11px rgba(88,54,114,1);
+    }
+    .login-box input {
+        border: none;
+        margin: 4px 10px 4px 0;
+        border-bottom: 1px solid #4f30677d;
+        padding: 7px 0;
+        width: 100%;
+        overflow: hidden;
+        background: transparent;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+
+</style>
+<body>
+<link rel="stylesheet" href="/resources/static/style.css">
+<center>
+    <img src="/resources/img/gachi_logo.png" width="500">
+
+    <div class="login-box">
+        <button class="login">LOG IN</button>
+        <input type="text" placeholder="USERNAME">
+        <input type="text" placeholder="PASSWORD">
+
+    </div>
+</center>
+
+
+</body>
+</html>
