@@ -8,14 +8,13 @@ import lombok.Setter;
 
 @Entity
 @Getter
-@Setter
 @NoArgsConstructor
 @Table(name = "users")
 public class User {
-    @Id
-    private Long id;
 
-    private String userid;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     // username , 중복방지
     @Column(nullable = false, unique = true)
@@ -49,10 +48,6 @@ public class User {
         this.password = password;
         this.nickname = nickname;
 
-    }
-
-    public String getUserId() {
-        return userid;
     }
 }
 

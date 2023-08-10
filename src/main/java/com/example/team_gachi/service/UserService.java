@@ -24,12 +24,11 @@ public class UserService {
 
     private final PasswordEncoder passwordEncoder;
     private final JwtUtil jwtUtil;
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtUtil jwtUtil) {
 
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtUtil jwtUtil) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtUtil = jwtUtil;
-
     }
 
     // 회원가입을 위한 메서드.
