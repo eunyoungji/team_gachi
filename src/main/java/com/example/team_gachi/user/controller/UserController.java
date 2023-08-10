@@ -1,12 +1,17 @@
 package com.example.team_gachi.user.controller;
 
 import com.example.team_gachi.service.UserService;
-import com.example.team_gachi.dto.LoginRequestDto;
-import com.example.team_gachi.dto.SignupRequestDto;
+import com.example.team_gachi.user.dto.LoginRequestDto;
+import com.example.team_gachi.user.dto.SignupRequestDto;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@RestController
+@Controller
 @RequestMapping("/api")
 public class UserController {
 
@@ -26,19 +31,14 @@ public class UserController {
         return "signup";
     }
 
-    @GetMapping("/hello")
-    public String hello(){
-        return "hello!";
-    }
-
     @PostMapping("/user/signup")
-    public String signup(SignupRequestDto requestDto){
+    public String signup(@RequestBody @Valid SignupRequestDto requestDto){
         userService.signup(requestDto);
 
         return "redirect:/api/users/signup";
     }
     @PostMapping("/user/login")
-    public String login(LoginRequestDto requestDto, HttpServletResponse res){
+    public String login(@RequestBody LoginRequestDto requestDto, HttpServletResponse res){
         try {
             userService.login(requestDto,res);
         } catch (Exception e) {

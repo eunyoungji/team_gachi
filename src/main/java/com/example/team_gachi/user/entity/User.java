@@ -8,13 +8,13 @@ import lombok.Setter;
 
 @Entity
 @Getter
-@Setter
 @NoArgsConstructor
 @Table(name = "users")
 public class User {
-    @Id
-    private Long id;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     // username , 중복방지
     @Column(nullable = false, unique = true)
@@ -28,7 +28,7 @@ public class User {
     @Column(nullable = false, unique = true)
     private String nickname;
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
     private UserRoleEnum role;
 
@@ -49,7 +49,6 @@ public class User {
         this.nickname = nickname;
 
     }
-
 }
 
     /* 프로필 수정
