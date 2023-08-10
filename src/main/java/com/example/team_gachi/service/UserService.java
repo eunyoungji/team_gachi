@@ -21,7 +21,6 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
-
     private final PasswordEncoder passwordEncoder;
     private final JwtUtil jwtUtil;
 
@@ -61,10 +60,10 @@ public class UserService {
             }
             role = UserRoleEnum.ADMIN;
         }
-
  */
         // 사용자를 등록.
-        User user = new User(username, password,nickname);
+        User user = new User(username, password, nickname);
+        userRepository.save(user);
     }
 
 /*

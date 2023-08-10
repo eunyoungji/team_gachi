@@ -4,9 +4,11 @@ import com.example.team_gachi.service.UserService;
 import com.example.team_gachi.user.dto.LoginRequestDto;
 import com.example.team_gachi.user.dto.SignupRequestDto;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -30,13 +32,13 @@ public class UserController {
     }
 
     @PostMapping("/user/signup")
-    public String signup(SignupRequestDto requestDto){
+    public String signup(@RequestBody @Valid SignupRequestDto requestDto){
         userService.signup(requestDto);
 
         return "redirect:/api/users/signup";
     }
     @PostMapping("/user/login")
-    public String login(LoginRequestDto requestDto, HttpServletResponse res){
+    public String login(@RequestBody LoginRequestDto requestDto, HttpServletResponse res){
         try {
             userService.login(requestDto,res);
         } catch (Exception e) {
