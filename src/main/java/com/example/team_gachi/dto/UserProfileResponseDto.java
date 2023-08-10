@@ -1,4 +1,4 @@
-package com.example.team_gachi.user.dto;
+package com.example.team_gachi.dto;
 
 import com.example.team_gachi.common.ApiResponseDto;
 import com.example.team_gachi.user.entity.User;

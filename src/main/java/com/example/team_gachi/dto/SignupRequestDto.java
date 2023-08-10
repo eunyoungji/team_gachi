@@ -1,4 +1,4 @@
-package com.example.team_gachi.user.dto;
+package com.example.team_gachi.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

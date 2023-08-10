@@ -1,10 +1,9 @@
 package com.example.team_gachi.user.controller;
 
 import com.example.team_gachi.service.UserService;
-import com.example.team_gachi.user.dto.LoginRequestDto;
-import com.example.team_gachi.user.dto.SignupRequestDto;
+import com.example.team_gachi.dto.LoginRequestDto;
+import com.example.team_gachi.dto.SignupRequestDto;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
