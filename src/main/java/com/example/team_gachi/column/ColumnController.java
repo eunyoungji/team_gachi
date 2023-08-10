@@ -1,9 +1,9 @@
 package com.example.team_gachi.column;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -30,5 +30,12 @@ public class ColumnController {
     @DeleteMapping("/column/{id}")
     public void deleteColumn(@PathVariable Long id){
         columnService.deleteColumn(id);
+    }
+
+    //칼럼 순서 변경
+    @PostMapping("/board/{id}")
+    public List<ColumnResponseDto> orderColumn(@PathVariable Long id, @RequestBody List<Long> columnIndex){
+        List<ColumnResponseDto> columnResponseDtoList = columnService.orderColumn(id, columnIndex);
+        return columnResponseDtoList;
     }
 }

@@ -42,4 +42,8 @@ public class ColumnClass {
     public void setIndex(){
         this.columnIndex = this.getId();
     }
+
+    public void setIndexBySort(Long sort){
+        this.columnIndex = sort;
+    }
 }

@@ -1,11 +1,13 @@
 package com.example.team_gachi.column;
 
 import com.example.team_gachi.board.Board;
-import com.example.team_gachi.board.BoardRepository;
 import com.example.team_gachi.board.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -43,6 +45,19 @@ public class ColumnService {
         ColumnClass column = findColumnClass(id);
 
         columnRepository.delete(column);
+    }
+
+    @Transactional
+    public List<ColumnResponseDto> orderColumn(Long id, List<Long> columnIndex){
+        List<ColumnClass> columnClassList = columnRepository.findByBoardId(id);
+        List<ColumnResponseDto> columnResponseDtoList = new ArrayList<>();
+        int i = 0;
+        for(ColumnClass column: columnClassList){
+            column.setIndexBySort(columnIndex.get(i));
+            columnResponseDtoList.add(new ColumnResponseDto(column));
+            i++;
+        }
+        return columnResponseDtoList;
     }
 
     public ColumnClass findColumnClass(Long id){
