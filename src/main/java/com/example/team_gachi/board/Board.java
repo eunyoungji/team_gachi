@@ -1,5 +1,6 @@
 package com.example.team_gachi.board;
 
+import com.example.team_gachi.boardUser.BoardUser;
 import com.example.team_gachi.column.ColumnClass;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -19,6 +20,9 @@ public class Board {
     @OneToMany(mappedBy = "board", fetch = FetchType.LAZY)
     @JsonIgnore
     private List<ColumnClass> columnClassList;
+
+    @OneToMany(mappedBy = "board")
+    private List<BoardUser> boardUserList;
 
     public void addColumn(ColumnClass column){
         this.columnClassList.add(column);
