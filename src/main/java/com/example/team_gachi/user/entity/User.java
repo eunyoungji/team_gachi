@@ -1,10 +1,13 @@
 package com.example.team_gachi.user.entity;
 
+import com.example.team_gachi.boardUser.BoardUser;
 import com.example.team_gachi.dto.UserProfileRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -32,6 +35,8 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     private UserRoleEnum role;
 
+    @OneToMany(mappedBy = "user")
+    private List<BoardUser> boardUserList;
 
     public void setId(Long id) {
 
