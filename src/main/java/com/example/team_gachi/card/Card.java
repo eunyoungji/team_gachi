@@ -3,7 +3,7 @@ package com.example.team_gachi.card;
 
 import com.example.team_gachi.column.ColumnClass;
 import com.example.team_gachi.comment.Comment;
-import com.example.team_gachi.user.User;
+//import com.example.team_gachi.user.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

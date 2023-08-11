@@ -1,7 +1,7 @@
 package com.example.team_gachi.security;
 
 import com.example.team_gachi.user.entity.User;
-import com.example.team_gachi.user.repository.UserRepository;
+import com.example.team_gachi.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

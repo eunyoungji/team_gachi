@@ -8,12 +8,14 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class UserProfileResponseDto extends ApiResponseDto {
-    String userid;
+
     String username;
+    String email;
     String nickname;
 
     public UserProfileResponseDto(User user) {
         this.username = user.getUsername();
+        this.email = user.getEmail();
         this.nickname = user.getNickname();
     }
 }

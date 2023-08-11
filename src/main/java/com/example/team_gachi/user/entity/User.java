@@ -8,6 +8,7 @@ import lombok.Setter;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor
 @Table(name = "users")
 public class User {
@@ -24,39 +25,41 @@ public class User {
     @Column(nullable = false, unique = true)
     private String password;
 
+    // 이메일, 중복 방지
+    @Column(nullable = false, unique = true)
+    private String email;
+
     // 닉네임, 중복방지
     @Column(nullable = false, unique = true)
     private String nickname;
 
-//    @Column(nullable = false)
+    //    @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
     private UserRoleEnum role;
 
 
     public void setId(Long id) {
-
         this.id = id;
     }
 
     public Long getId() {
+
         return id;
     }
 
 
-    public User(String username, String password, String nickname) {
+    public User(String username, String password, String nickname, String email) {
         this.username = username;
         this.password = password;
         this.nickname = nickname;
+        this.email = email;
 
     }
-}
 
-    /* 프로필 수정
+
     public void modifyProfile(UserProfileRequestDto requestDto){
         this.username = requestDto.getUsername();
         this.password = requestDto.getPassword();
         this.nickname = requestDto.getNickname();
     }
-
 }
-*/
