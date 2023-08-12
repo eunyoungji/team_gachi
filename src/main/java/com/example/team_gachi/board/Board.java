@@ -1,12 +1,16 @@
 package com.example.team_gachi.board;
 
+import com.example.team_gachi.card.Card;
+import com.example.team_gachi.column.ColumnClass;
 import com.example.team_gachi.common.Timestamped;
+import com.example.team_gachi.user.entity.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Formula;
 
-import javax.annotation.processing.Generated;
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,6 +22,10 @@ public class Board extends Timestamped {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
     @Column(name = "boardName", nullable = false, unique = true)
     private String boardName;
 
@@ -27,6 +35,16 @@ public class Board extends Timestamped {
     @Column(name = "boardInfo", nullable = false, unique = true)
     private String boardInfo;
 
+    @Column
+    @Formula("(select count(*) from card i where i.board_id = id)")
+    private int totalCards;
+
+    @OneToMany(targetEntity = ColumnClass.class, mappedBy = "board", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<ColumnClass> columnClasses;
+
+    @OneToMany(targetEntity = Card.class, mappedBy = "board", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Card> cards;
+
     public Board(BoardRequestDto requestDto) {
         this.boardName = requestDto.getBoardName();
         this.nickname = requestDto.getNickname();
@@ -34,4 +52,6 @@ public class Board extends Timestamped {
     }
 
 
+    public void addColumn(ColumnClass addOrderColumn) {
+    }
 }

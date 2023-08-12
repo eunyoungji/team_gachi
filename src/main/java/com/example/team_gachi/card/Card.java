@@ -3,7 +3,7 @@ package com.example.team_gachi.card;
 
 import com.example.team_gachi.column.ColumnClass;
 import com.example.team_gachi.comment.Comment;
-import com.example.team_gachi.user.User;
+import com.example.team_gachi.user.entity.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -43,14 +43,14 @@ public class Card {
     @JoinColumn(name = "column_id")
     private ColumnClass column;
 
-//    @OneToMany(fetch = FetchType.LAZY)
-//    private List<ColumnClass> columns = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<ColumnClass> columns = new ArrayList<>();
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "card", cascade = CascadeType.ALL)
-//    private List<User> users = new ArrayList<>();
-//
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "card", cascade = CascadeType.ALL)
-//    private List<Comment> comments = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "card", cascade = CascadeType.ALL)
+    private List<User> users = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "card", cascade = CascadeType.ALL)
+    private List<Comment> comments = new ArrayList<>();
 
 
 

@@ -27,7 +27,7 @@ public class ColumnClass {
     @JoinColumn(name = "board_id")
     private Board board;
 
-    @OneToMany(mappedBy = "columnClass")
+    @OneToMany(mappedBy = "column_id")
     private List<Card> cardList;
 
     public ColumnClass(ColumnRequestDto columnRequestDto, Board board) {
