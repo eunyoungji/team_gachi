@@ -17,7 +17,7 @@ public class CardController {
 
     // 카드 생성
     //@PostMapping("/column/{column_id}/card")
-    @PostMapping("{columnId}/cards")
+    @PostMapping("{columnId}/card")
     public ResponseEntity<CardResponseDto> createCard(@PathVariable Long columnId, @RequestBody CardRequestDto cardRequestDto){
         CardResponseDto result = cardService.createCard(cardRequestDto, columnId); //
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
@@ -30,25 +30,25 @@ public class CardController {
 //    }
 
     // 카드 수정 --> 타이틀 따로, 내용 따로....부분적으로 수정할 수 있게??
-    @PutMapping("/cards/{cardId}")
+    @PutMapping("/card/{cardId}")
     public ResponseEntity<CardResponseDto> updateCard(@PathVariable Long cardId, @RequestBody CardRequestDto cardRequestDto){
         CardResponseDto result = cardService.updateCard(cardId, cardRequestDto);
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
     // 카드 삭제
-    @DeleteMapping("/cards/{cardId}")
+    @DeleteMapping("/card/{cardId}")
     public void deleteCard(@PathVariable Long cardId){
         cardService.deleteCard(cardId);
     }
 
-//    @PatchMapping("/cards/{card_Id}/duedate")
+//    @PatchMapping("/card/{card_Id}/duedate")
 //    public ResponseEntity<CardResponseDto> changeDueDate(@PathVariable Long id, @RequestBody CardRequestDto cardRequestDto) {
 //
 //        return null;
 //    }
 
-//    @PatchMapping("/cards/{card_Id}/color")
+//    @PatchMapping("/card/{card_Id}/color")
 //    public ResponseEntity<CardResponseDto> changeColor(@PathVariable Long id, @RequestBody CardRequestDto cardRequestDto) {
 //        return null;
 //    }

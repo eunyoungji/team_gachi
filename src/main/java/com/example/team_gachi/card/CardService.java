@@ -39,7 +39,7 @@ public class CardService {
     @Transactional
     public CardResponseDto updateCard(Long id, CardRequestDto cardRequestDto) {
         Card card = findCard(id);
-        card.setTitle(cardRequestDto.getTitle());
+        card.updateCard(cardRequestDto);
         return new CardResponseDto(card);
     }
 
