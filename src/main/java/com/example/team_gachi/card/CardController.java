@@ -16,7 +16,7 @@ public class CardController {
     private final CardService cardService;
 
     // 카드 생성
-    //@PostMapping("/column/{column_id}/card")
+    //@PostMapping("/boards/columns/{columnId}/card")
     @PostMapping("/cards")
     public ResponseEntity<CardResponseDto> createCard(@PathVariable Long columId, @RequestBody CardRequestDto cardRequestDto){
         CardResponseDto result = cardService.createCard(cardRequestDto, columId); //
@@ -24,7 +24,7 @@ public class CardController {
     }
 
 //    // 카드 조회
-//    @GetMapping("/column/{column_id}/card")
+//    @GetMapping("/column/{columnId}/card")
 //    public List<CardResponseDto> getCards(@PathVariable Long column_id){
 //        return cardService.getCards(column_id);
 //    }

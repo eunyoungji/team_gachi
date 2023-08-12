@@ -15,14 +15,13 @@ import java.util.List;
 
 @Entity
 @Getter
-@Setter
 @NoArgsConstructor
 @Table(name="card")
 public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id", nullable = false)
-    private Long id;
+    private Long cardId;
 
     @Column(name = "title", nullable = false)
     String title;
@@ -36,8 +35,8 @@ public class Card {
     @Column(name = "dueDate")
     String dueDate;
 
-    @Column
-    private Long cardIndex;
+//    @Column
+//    private Long cardIndex;
 
     @ManyToOne
     @JoinColumn(name = "column_id")
@@ -48,9 +47,9 @@ public class Card {
 
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "card", cascade = CascadeType.ALL)
 //    private List<User> users = new ArrayList<>();
-//
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "card", cascade = CascadeType.ALL)
-//    private List<Comment> comments = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "card", cascade = CascadeType.ALL)
+    private List<Comment> comments = new ArrayList<>();
 
 
 
@@ -68,5 +67,9 @@ public class Card {
         this.content = cardRequestDto.getContent();
         this.color = cardRequestDto.getColor();
         this.dueDate = cardRequestDto.getDueDate();
+    }
+
+    public void updateDueDate(String dueDate) {
+        this.dueDate = dueDate;
     }
 }
