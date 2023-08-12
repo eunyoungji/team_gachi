@@ -29,18 +29,24 @@ public class CardService {
 
     //  카드 수정
     @Transactional
-    public CardResponseDto updateCard(Long id, CardRequestDto cardRequestDto) {
-        Card card = findCard(id);
-        card.setTitle(card.title);
+    public CardResponseDto updateCard(Long cardId, CardRequestDto cardRequestDto) {
+        Card card = findCard(cardId);
+        //card.setTitle(card.title);
+        card.updateCard(cardRequestDto);
         return new CardResponseDto(card);
+        //return new CardResponseDto(card.updateCard(cardRequestDto));
     }
 
     //  카드 삭제
-    public void deleteCard(Long id) {
-        Card card = findCard(id);
+    public void deleteCard(Long cardId) {
+        Card card = findCard(cardId);
         cardRepository.delete(card);
 
     }
+
+//    public CardResponseDto changeCardMembers(Long cardId)  {
+//
+//    }
 
     private Card findCard(Long id) {
         return cardRepository.findById(id).orElseThrow(() ->

@@ -16,7 +16,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 public class CardResponseDto {
-    private Long id;
+    private Long cardId;
     private String title;
     private String content;
     private String color;
@@ -27,7 +27,7 @@ public class CardResponseDto {
     //private List<CardRequestDto> cardsList;
 
     public CardResponseDto(Card card) {
-        this.id = card.getId();
+        this.cardId = card.getCardId();
         this.title = card.getTitle();
         this.content = card.getContent();
         this.color = card.getColor();
