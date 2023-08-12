@@ -1,6 +1,6 @@
 package com.example.team_gachi.card;
 
-import com.example.team_gachi.user.User;
+import com.example.team_gachi.user.entity.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
