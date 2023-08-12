@@ -1,9 +1,7 @@
 package com.example.team_gachi.card;
 
-import com.example.team_gachi.user.User;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.time.LocalDateTime;
 

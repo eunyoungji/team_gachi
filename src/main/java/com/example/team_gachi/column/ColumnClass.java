@@ -27,7 +27,7 @@ public class ColumnClass {
     @JoinColumn(name = "board_id")
     private Board board;
 
-    @OneToMany(mappedBy = "columnClass")
+    @OneToMany(mappedBy = "column")
     private List<Card> cardList;
 
     public ColumnClass(ColumnRequestDto columnRequestDto, Board board) {
@@ -45,5 +45,9 @@ public class ColumnClass {
 
     public void setIndexBySort(Long sort){
         this.columnIndex = sort;
+    }
+
+    public void addCard(Card card) {
+        this.cardList.add(card);
     }
 }

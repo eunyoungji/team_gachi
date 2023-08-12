@@ -37,6 +37,7 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        //에러 원인
         UserRoleEnum role = user.getRole();
         String authority = role.getAuthority();
 

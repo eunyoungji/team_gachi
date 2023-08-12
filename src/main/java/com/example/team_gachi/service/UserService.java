@@ -1,9 +1,6 @@
 package com.example.team_gachi.service;
 
-import com.example.team_gachi.common.ApiResponseDto;
-import com.example.team_gachi.dto.UserProfileRequestDto;
 import com.example.team_gachi.jwt.JwtUtil;
-import com.example.team_gachi.repository.SignupAuthRepository;
 import com.example.team_gachi.user.dto.LoginRequestDto;
 import com.example.team_gachi.user.dto.SignupRequestDto;
 import com.example.team_gachi.user.entity.User;
@@ -30,6 +27,8 @@ public class UserService {
         this.jwtUtil = jwtUtil;
     }
 
+//    private final String ADMIN_TOKEN = "AAABnvxRVklrnYxKZ0aHgTBcXukeZygoC";
+
     // 회원가입을 위한 메서드.
     // 요청받는 requestbody의 정보 (username, password, nickname)으로 계정생성.
     public void signup(SignupRequestDto requestDto) {
@@ -41,28 +40,27 @@ public class UserService {
 
         // 회원 중복여부 확인.
         Optional<User> checkUsername = userRepository.findByUsername(username);
-        //  닉네임 중복여부 확인.
-        Optional<User> checkNickname = userRepository.findByNickname(nickname);
-
         if(checkUsername.isPresent()){
             throw new IllegalArgumentException("사용자가 이미 존재합니다.");
         }
 
+        //  닉네임 중복여부 확인.
+        Optional<User> checkNickname = userRepository.findByNickname(nickname);
         if(checkNickname.isPresent()){
             throw new IllegalArgumentException("이미 존재하는 닉네임입니다.");
         }
 
-/*
+
         UserRoleEnum role= UserRoleEnum.USER;
-        if(requestDto.isAdmin()){
-            if(ADMIN_TOKEN.equals(requestDto.getAdminToken())){
-                throw new IllegalArgumentException("관리자의 암호가 틀립니다.");
-            }
-            role = UserRoleEnum.ADMIN;
-        }
- */
+//        if(requestDto.isAdmin()){
+//            if(ADMIN_TOKEN.equals(requestDto.getAdminToken())){
+//                throw new IllegalArgumentException("관리자의 암호가 틀립니다.");
+//            }
+//            role = UserRoleEnum.ADMIN;
+//        }
+
         // 사용자를 등록.
-        User user = new User(username, password, nickname);
+        User user = new User(username, password, nickname, role);
         userRepository.save(user);
     }
 

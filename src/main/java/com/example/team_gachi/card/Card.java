@@ -2,23 +2,6 @@ package com.example.team_gachi.card;
 
 
 import com.example.team_gachi.column.ColumnClass;
-import com.example.team_gachi.comment.Comment;
-import com.example.team_gachi.user.User;
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-
-@Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@Table(name="card")
-import com.example.team_gachi.column.ColumnClass;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -52,9 +35,6 @@ public class Card {
     @JoinColumn(name = "column_id")
     private ColumnClass column;
 
-//    @OneToMany(fetch = FetchType.LAZY)
-//    private List<ColumnClass> columns = new ArrayList<>();
-
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "card", cascade = CascadeType.ALL)
 //    private List<User> users = new ArrayList<>();
 //
@@ -77,5 +57,9 @@ public class Card {
         this.content = cardRequestDto.getContent();
         this.color = cardRequestDto.getColor();
         this.dueDate = cardRequestDto.getDueDate();
+    }
+
+    public void setTitle(String title){
+        this.title = title;
     }
 }

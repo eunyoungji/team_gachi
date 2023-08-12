@@ -16,10 +16,15 @@ public class CardService {
 
     // 카드 생성
     public CardResponseDto createCard(CardRequestDto cardRequestDto, Long columnId) { //Long columId
-        ColumnClass columns = columnService.findColumnClass(columnId);
-        Card card = new Card(cardRequestDto, columns); // columns
-        cardRepository.save(card);
-        return new CardResponseDto(card);
+        ColumnClass column = columnService.findColumnClass(columnId);
+        Card card = new Card(cardRequestDto, column); // column
+
+        Card saveCard = cardRepository.save(card);
+
+        column.addCard(saveCard);
+
+        CardResponseDto cardResponseDto = new CardResponseDto(saveCard);
+        return cardResponseDto;
     }
 
 //    //  카드 전체 조회
@@ -31,7 +36,7 @@ public class CardService {
     @Transactional
     public CardResponseDto updateCard(Long id, CardRequestDto cardRequestDto) {
         Card card = findCard(id);
-        card.setTitle(card.title);
+        card.setTitle(cardRequestDto.getTitle());
         return new CardResponseDto(card);
     }
 

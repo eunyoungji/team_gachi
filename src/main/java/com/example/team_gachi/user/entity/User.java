@@ -1,11 +1,9 @@
 package com.example.team_gachi.user.entity;
 
 import com.example.team_gachi.boardUser.BoardUser;
-import com.example.team_gachi.dto.UserProfileRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.List;
 
@@ -31,7 +29,7 @@ public class User {
     @Column(nullable = false, unique = true)
     private String nickname;
 
-//    @Column(nullable = false)
+    @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
     private UserRoleEnum role;
 
@@ -39,7 +37,6 @@ public class User {
     private List<BoardUser> boardUserList;
 
     public void setId(Long id) {
-
         this.id = id;
     }
 
@@ -48,10 +45,11 @@ public class User {
     }
 
 
-    public User(String username, String password, String nickname) {
+    public User(String username, String password, String nickname, UserRoleEnum role) {
         this.username = username;
         this.password = password;
         this.nickname = nickname;
+        this.role = role;
 
     }
 }
