@@ -21,9 +21,12 @@ public class CardService {
 
         Card saveCard = cardRepository.save(card);
 
-        column.addCard(saveCard);
+        saveCard.setIndex();
+        Card addOrderCard = cardRepository.save(saveCard);
 
-        CardResponseDto cardResponseDto = new CardResponseDto(saveCard);
+        column.addCard(addOrderCard);
+
+        CardResponseDto cardResponseDto = new CardResponseDto(addOrderCard);
         return cardResponseDto;
     }
 

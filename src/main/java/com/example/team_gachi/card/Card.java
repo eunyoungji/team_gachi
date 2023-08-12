@@ -62,4 +62,8 @@ public class Card {
     public void setTitle(String title){
         this.title = title;
     }
+
+    public void setIndex() {
+        this.cardIndex = this.getId();
+    }
 }
