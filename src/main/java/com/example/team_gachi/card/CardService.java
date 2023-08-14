@@ -16,10 +16,18 @@ public class CardService {
 
     // 카드 생성
     public CardResponseDto createCard(CardRequestDto cardRequestDto, Long columnId) { //Long columId
-        ColumnClass columns = columnService.findColumnClass(columnId);
-        Card card = new Card(cardRequestDto, columns); // columns
-        cardRepository.save(card);
-        return new CardResponseDto(card);
+        ColumnClass column = columnService.findColumnClass(columnId);
+        Card card = new Card(cardRequestDto, column); // column
+
+        Card saveCard = cardRepository.save(card);
+
+        saveCard.setIndex();
+        Card addOrderCard = cardRepository.save(saveCard);
+
+        column.addCard(addOrderCard);
+
+        CardResponseDto cardResponseDto = new CardResponseDto(addOrderCard);
+        return cardResponseDto;
     }
 
 //    //  카드 전체 조회
@@ -29,24 +37,18 @@ public class CardService {
 
     //  카드 수정
     @Transactional
-    public CardResponseDto updateCard(Long cardId, CardRequestDto cardRequestDto) {
-        Card card = findCard(cardId);
-        //card.setTitle(card.title);
+    public CardResponseDto updateCard(Long id, CardRequestDto cardRequestDto) {
+        Card card = findCard(id);
         card.updateCard(cardRequestDto);
         return new CardResponseDto(card);
-        //return new CardResponseDto(card.updateCard(cardRequestDto));
     }
 
     //  카드 삭제
-    public void deleteCard(Long cardId) {
-        Card card = findCard(cardId);
+    public void deleteCard(Long id) {
+        Card card = findCard(id);
         cardRepository.delete(card);
 
     }
-
-//    public CardResponseDto changeCardMembers(Long cardId)  {
-//
-//    }
 
     private Card findCard(Long id) {
         return cardRepository.findById(id).orElseThrow(() ->
